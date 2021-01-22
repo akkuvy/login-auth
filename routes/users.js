@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var messagebird = require('messagebird')("jbebWClQArvc3rCWeNyvL7Xtp")
 const passport=require('passport')
-var gauth=require('../config/gauth')
+var gauth=require('../config/auth')
 
 
 router.get("/", function (req, res, next) {
@@ -65,3 +65,13 @@ router.get(
   console.log(req.user);
   res.render('dashboard')
   })
+  app.get('/auth/facebook', passport.authenticate('facebook'));
+  app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { successRedirect: '/dashboard',
+                                      failureRedirect: '/' }));
+                                      app.get('/auth/facebook',
+  passport.authenticate('facebook', { scope: 'read_stream' })
+);
+app.get('/auth/facebook',
+  passport.authenticate('facebook', { scope: ['read_stream', 'publish_actions'] })
+);
