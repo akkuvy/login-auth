@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var messagebird = require('messagebird')("jbebWClQArvc3rCWeNyvL7Xtp")
+var messagebird = require('messagebird')("")
 const passport=require('passport')
 var gauth=require('../config/auth')
 
